@@ -8,4 +8,5 @@ public interface IUserDao {
     List<User> viewUser();
     void deleteUser(int id);
     void updateUser(User user);
+    void addUser(User user);
 }

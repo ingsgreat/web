@@ -11,8 +11,11 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="">
-        <input type="text">
+    <form action="addUser.do" method="post">
+        <label for="id">ID</label> <input type="text" name="id" id="id" value="<%=request.getParameter("id")%>">
+        <label for="name">姓名</label> <input type="text" name="name" id="name" value="<%=request.getParameter("name")%>">
+        <label for="address">地址</label> <input type="text" name="address" id="address" value="<%=request.getParameter("address")%>">
+        <input type="submit" value="添加">
     </form>
 </body>
 </html>

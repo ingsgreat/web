@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.List;
 
 public class UserServlet extends HttpServlet {
@@ -45,6 +41,17 @@ public class UserServlet extends HttpServlet {
             User user=new User(Integer.parseInt(id),name,address);
             IUserDao userDao=new UserDaoImpl();
             userDao.updateUser(user);
+            request.getRequestDispatcher("/user/viewUser.do").forward(request,response);
+        }
+        else if(uri.endsWith("addUser.do")){
+            System.out.println("kkkkkkkkkk");
+            request.setCharacterEncoding("UTF-8");
+            String id=request.getParameter("id");
+            String name=request.getParameter("name");
+            String address=request.getParameter("address");
+            User user=new User(Integer.parseInt(id),name,address);
+            IUserDao userDao=new UserDaoImpl();
+            userDao.addUser(user);
             request.getRequestDispatcher("/user/viewUser.do").forward(request,response);
         }
         else if(uri.endsWith("login")){

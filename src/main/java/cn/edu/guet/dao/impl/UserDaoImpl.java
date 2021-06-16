@@ -107,4 +107,34 @@ public class UserDaoImpl implements IUserDao {
             }
         }
     }
+
+    @Override
+    public void addUser(User user) {
+        String url="jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=gbk&autoReconnect=true&failOverReadOnly=false&serverTimezone=UTC";
+        String username="root";
+        String password="123456";
+        Connection conn=null;
+        PreparedStatement pstmt=null;
+        String sql="insert into users values (?,?,?)";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn= DriverManager.getConnection(url,username,password);
+            pstmt=conn.prepareStatement(sql);
+            pstmt.setInt(1,user.getId());
+            pstmt.setString(2,user.getName());
+            pstmt.setString(3,user.getAddress());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                pstmt.close();
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

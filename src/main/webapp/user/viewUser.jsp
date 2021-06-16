@@ -40,7 +40,8 @@
                 <a href="deleteUser.do?id=<%=userList.get(i).getId()%>">删除</a>
                 <a href="updateUser.jsp?id=<%=userList.get(i).getId()%>
 &name=<%=userList.get(i).getName()%>&address=<%=userList.get(i).getAddress()%>">修改</a>
-                <a href="addUser.jsp">添加</a>
+                <a href="addUser.jsp?id=<%=userList.get(i).getId()%>
+&name=<%=userList.get(i).getName()%>&address=<%=userList.get(i).getAddress()%>">添加</a>
             </td>
         </tr>
         <%
